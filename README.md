@@ -31,5 +31,5 @@ Also latex including the following are rquired for report functionality
 Running the following commands in the shell terminal
     
     chmodx +x install.sh
-    ./install
+    sudo ./install
     
