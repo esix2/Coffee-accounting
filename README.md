@@ -3,7 +3,7 @@ A linux-based Python software for kitchen accounting at small companies.
 The whole software is based text files. Just for easy reading .xlsx files are generated out the tex files, automatically.
 
 ## Requirements
-The following softwares and packages are required
+The following softwares and packages are required. Though , it might be still possible to use different verions of other packages, which are comptible with Python 2.7
 
     python 2.7
     pandas   0.20.1
