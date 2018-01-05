@@ -33,3 +33,10 @@ Running the following commands in the shell terminal
     chmodx +x install.sh
     sudo ./install
     
+## How to use
+After installation. Change to #installation_path/src directory. And execute the command:
+
+    python Coffee.py
+
+The rest is easy, you will see what options you have. Good luck. If you have any question email me under zandi@ti.rwth-aachen.de
+    
