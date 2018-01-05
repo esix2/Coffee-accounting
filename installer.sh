@@ -39,4 +39,4 @@ case $key in
   path=$newpath;
 esac
 mkdir $path;
-cp -r src $path;
+cp -r * $path;
