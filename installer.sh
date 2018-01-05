@@ -29,7 +29,7 @@ do_sudo "Installing openpyxl" pip install openpyxl==1.8.2
 do_sudo "Installing numpy1.7.1" pip install numpy==1.7.1
 do_sudo "Installing keyring10.3.2" pip install keyring==10.3.2
 do_sudo "Installing getent" pip install getent==0.2
-path=~/kitchen
+path=~/Coffee-accounting
 echo "the default installation path is $path. Do you want to change it [y/N]?"
 read key
 case $key in
