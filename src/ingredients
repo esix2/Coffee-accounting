@@ -1,0 +1,9 @@
+Drink,Coffee(ml),Espresso(ml),Water(ml),Temperature,Milchschaum(sec),Milch(sec)
+Kaffee,45,0,40,Normal,0,0
+Milchkaffee,80,0,0,High,12,4
+Cappuccino,60,20,0,High,14,4
+Espresso,0,45,0,High,0,0
+Ristretto,0,0,0,High,0,0
+Macchiato,0,65,0,High,17,5
+Milschaum,0,0,0,--,10,0
+Milch (250ml),0,0,0,--,50,0

@@ -1,0 +1,61 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\usepackage{framed}
+%\usepackage{ngerman}
+\usepackage{eurosym}
+\usepackage{tabularx}
+\usepackage{csvsimple}
+\usepackage[hidelinks]{hyperref}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{wasysym}
+\usepackage{xstring}
+\usepackage{datetime}
+\newtimeformat{dottime}{\twodigit{\day}.\twodigit{\month}.\twodigit{\year}}
+\settimeformat{dottime}
+\setlength{\parindent}{0in}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue, %Colour for external hyperlinks
+    pdfborder={0 0 0},
+}
+\hoffset=-40pt
+\voffset=-40pt
+\textwidth = 450pt
+\newcommand{\moneycolor}[1]{
+\IfBeginWith{#1}{-}
+{{\color{red}#1}}
+{{\color{green}#1}}
+}
+\begin{document}
+\pagestyle{empty}
+
+
+\csvreader{Summary}{}
+{ 
+\begin{center}
+\csvheadset{Name=\n} \Large{\textbf{\n 's coffee history until \currenttime}}\\
+\end{center}
+\vspace{0.5cm}
+\csvheadset{Paid=\p} Your total payment:~~~~  \p\EUR\\
+\csvheadset{Expenditure=\e} Your total expenditure: \e\EUR\\
+\csvheadset{Balance=\b} Your current balance:~~ \moneycolor{\b}\EUR
+}
+
+\vspace{1cm}
+\begin{center}
+{\large\textbf{Payment history}}\\
+\csvautobooktabular{PayHist}
+\end{center}
+\vfill
+\begin{center}
+{\large\textbf{Drinking history}}\\
+\csvautobooktabular{CupHist}
+%\csvautobooklongtable[table head=\toprule\csvlinetotablerow\\\midrule]{CupHist}
+\end{center}
+%\end{minipage}
+\end{document}
