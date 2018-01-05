@@ -18,12 +18,17 @@ do_sudo() {
 }
 if [ -z "`which python2.7`" ] ; then
         echo "You really need iselect for apt-iselect, installing..."
-        do_sudo "Installing iselect" apt-get install python2.7
+        do_sudo "Installing python2.7" apt-get install python2.7
 fi
 if [ -z "`which pdflatex`" ] ; then
         echo "You really need iselect for apt-iselect, installing..."
-        do_sudo "Installing iselect" apt-get install texlive
+        do_sudo "Installing latex" apt-get install texlive
 fi
+if [ -z "`which pip`" ] ; then
+        echo "You really need iselect for apt-iselect, installing..."
+        do_sudo "Installing pip" sudo apt-get install python-pip
+fi
+
 pip install pandas==0.20.1
 do_sudo "Installing openpyxl" pip install openpyxl==1.8.2
 do_sudo "Installing numpy1.7.1" pip install numpy==1.7.1
