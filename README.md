@@ -20,18 +20,19 @@ Also latex including the following are rquired for report functionality
 ## Manual installation
     
     sudo apt-get install python2.7
+    sudo apt-get install texlive
     sudo pip install pandas==0.20.1
     sudo pip install openpyxl==1.8.2
     sudo pip install numpy==1.7.1
-    sudo pip install keyrin==10.3.2
+    sudo pip install keyring==10.3.2
     sudo pip install getent==0.2
-    sudo apt-get install texlive
+    
     
 ## Installation with 
 Running the following commands in the shell terminal
     
-    chmodx +x install.sh
-    sudo ./install
+    chmodx +x installer.sh
+    ./installer
     
 ## How to use
 After installation. Change to #installation_path/src directory. And execute the command:
