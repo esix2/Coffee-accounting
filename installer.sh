@@ -28,15 +28,20 @@ if [ -z "`which pip`" ] ; then
         echo "You really need pip for apt-iselect, installing..."
         do_sudo "Installing pip" sudo apt-get install python-pip
 fi
+#if [ -z "`which setuptools`" ] ; then
+#        echo "You really need setuptools for apt-iselect, installing..."
+#        do_sudo "Installing setuptools" sudo apt-get install python-setuptools
+#fi
 if [ -z "`which setuptools`" ] ; then
         echo "You really need setuptools for apt-iselect, installing..."
-        do_sudo "Installing setuptools" sudo apt-get install python-setuptools
+        do_sudo "Installing virtualenv" pip install virtualenv
 fi
-pip install pandas==0.20.1
-do_sudo "Installing openpyxl" pip install openpyxl==1.8.2
-do_sudo "Installing numpy1.7.1" pip install numpy==1.7.1
-do_sudo "Installing keyring10.3.2" pip install keyring==10.3.2
-do_sudo "Installing getent" pip install getent==0.2
+
+python2.7 -m virtualenv VirtualEnv
+source VirtualEnv/bin/activate
+mv requirements.txt VirtualEnv/
+pip install -r VirtualEnv/requirements.txt
+
 path=~/Coffee-accounting
 echo "the default installation path is $path. Do you want to change it [y/N]?"
 read key
@@ -47,4 +52,6 @@ case $key in
   path=$newpath;
 esac
 mkdir $path;
-cp -r * $path;
+cd ../
+mv Coffee-accounting/ $path;
+cd $path
