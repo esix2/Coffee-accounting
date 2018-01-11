@@ -4,7 +4,7 @@
 *.synctex.gz
 *~
 *-blx.bib
-*.Rout
+accountant_info
 *.aux
 *.backup
 *.bak
@@ -27,7 +27,8 @@
 *.toc
 .*.RData
 *.pyc
+*.Rout
 *.swp
 *.swo
 */tmp
-*/VirtualEnv
+**/VirtualEnv
