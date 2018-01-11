@@ -9,6 +9,7 @@ The following softwares and packages are required. Though , it might be still po
     python-setuptools
     pandas   0.20.1
     openpyxl 1.8.2
+    xlsxwriter 0.9.6
     numpy    1.7.1
     keyring  10.3.2
     getent   0.2
