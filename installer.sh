@@ -1,4 +1,20 @@
 #!/bin/bash
+
+path=~/Coffee-accounting
+echo "the default installation path is $path. Do you want to change it [y/N]?"
+read key
+case $key in
+  y|Y|yes|Yes)
+  echo 'Insert your desired path. It is highly recommended to install in your home directory:';
+  read newpath;
+  path=$newpath;
+esac
+mkdir $path;
+cp -r * $path;
+cd ..
+rm -rf Coffee-accounting
+cd $path
+
 if [ ! -z "`which sudo`" ] ; then
         use_sudo=1
 else
@@ -41,17 +57,4 @@ python2.7 -m virtualenv VirtualEnv
 source VirtualEnv/bin/activate
 pip install -r requirements.txt
 
-path=~/Coffee-accounting
-echo "the default installation path is $path. Do you want to change it [y/N]?"
-read key
-case $key in
-  y|Y|yes|Yes)
-  echo 'Insert your desired path. It is highly recommended to install in your home directory:';
-  read newpath;
-  path=$newpath;
-esac
-mkdir $path;
-cp -r * $path;
-cd ..
-rm -rf Coffee-accounting
-cd $path
+
