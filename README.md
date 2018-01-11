@@ -30,7 +30,6 @@ Also latex including the following are rquired for report functionality
 ## Installation with 
 Running the following commands in the shell terminal
     
-    chmodx +x installer.sh
     ./installer
     
 ## How to use
@@ -42,7 +41,6 @@ After installation. Change to #installation_path/src directory. And execute the 
         
    second way (in the main folder):
    
-        chmodx + x Coffee.sh
         ./Coffee.sh
 
 The rest is easy, you will see what options you have. Good luck. If you have any question email me under zandi@ti.rwth-aachen.de
