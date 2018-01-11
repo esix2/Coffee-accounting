@@ -7,7 +7,7 @@ from splitDate import splitDate
 def UpdatePrices(Date,current_drinks,guarantee):
         pwd = os.getcwd()
 	Coff_price, Esp_price, Milk_price = StockPrices(Date) 
-        os.chdir("../../../src")
+        os.chdir("../../../../src")
         df = pd.read_csv('ingredients')
         os.chdir(pwd)
         b = np.divide(1,4500.) ## wight (kg) of one ml in the coffee machine
@@ -42,7 +42,7 @@ def StockPrices(Date):
 	parent = os.getcwd()
 	os.chdir(pwd)
 	try:
-					df_lastYear = pd.read_csv(parent+"/Year_"+str(year-1)+"/"+csvFile)
+					df_lastYear = pd.read_csv(parent+"/data/Year_"+str(year-1)+"/"+csvFile)
 	except:
 					pass
 

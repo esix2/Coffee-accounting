@@ -122,8 +122,8 @@ def EmailUponRecharge(person,amount):
 	subj = "Coffee (Recharge Successful)"
 	msg = "Dear Colleague "+person+",\n\nMany thanks to you for recharging your account. Now an amount of "
 	msg = msg + str(amount)+ "€ is deposited into your account.\nYour current balance is "+str(credit)+"€"
-	files = "../../../src/Sheriff_of_Nottingham.pdf"
-	reportFile = '../../../src/tmp/'+person+'_report.pdf'
+	files = "../../../../src/Sheriff_of_Nottingham.pdf"
+	reportFile = '../../../../src/tmp/'+person+'_report.pdf'
 	CreatePersonReport(person)
 	if os.path.isfile(reportFile):
 		files = [reportFile,files]

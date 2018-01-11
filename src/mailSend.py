@@ -1,4 +1,7 @@
 import os
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 import smtplib
 from email.mime.text import MIMEText
 import email.mime.application
@@ -13,6 +16,11 @@ import getent
 def mailSend(recipient,subject,body,files):
 	###### To get the username automatically from the computer
 	username = getpass.getuser()
+	password = keyring.get_password('system', username)
+	if str(password) == 'None':
+		password = getpass.getpass("Please enter your passwrod. It will be stored in your keyring:")
+		keyring.set_password('system', username,password)
+
 	###### To get the first and sir name of sender automatically from the computer
 #	MyName = getent.passwd(username).gecos[0:len(getent.passwd(username).gecos)-3]
 	###### The sender name of desire

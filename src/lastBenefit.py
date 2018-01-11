@@ -7,9 +7,7 @@ def lastBenefit():
 ##############################################################
 ##############################################################
 	pwd = os.getcwd()
-#	os.chdir('../../../src')
-#        year = int(time.strftime("%Y"))
-	if pwd  == '/home/zandi/Documents/Kitchen/Year_2015/V2/csv':
+	if pwd  == '/home/zandi/Documents/Kitchen/data/Year_2015/V2/csv':
 		benefit = -18.91
 	else:
 		try:
@@ -26,14 +24,13 @@ def lastBenefit():
 def FindPreviousVersion():
         year = int(time.strftime("%Y"))
         pwd = os.getcwd()
-        #os.chdir('../../../src') 
         parent = os.path.dirname(pwd)
         if float(parent[len(parent)-1]) == 1:
                 parent = os.path.dirname(parent)
                 parent = os.path.dirname(parent)
                 for version_index in range(1,1001):  ## finds the the oldest version of the last year
-                        if os.path.isdir(parent+"/Year_"+str(year-1)+"/V"+str(version_index)):
-                                PreviousVersion = parent+"/Year_"+str(year-1)+"/V"+str(version_index)
+                        if os.path.isdir(parent+"/data/Year_"+str(year-1)+"/V"+str(version_index)):
+                                PreviousVersion = parent+"/data/Year_"+str(year-1)+"/V"+str(version_index)
                         else:
                                 break
         else:

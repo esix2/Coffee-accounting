@@ -45,7 +45,7 @@ def AddNewMember():
 		sender = "zandi@ti.rwth-aachen.de"
 		body = "Dear Colleague "+NewPerson+",\n\nWelcome to our coffee system. You have now "+str(FirstMoney)+"€ in your account. Please enjoy your coffee and do not forget to put a mark on the list (in the kitchen) each time you drink a cup.\n\n"
 		body = body + "PS: This message is sent automatically and privately to you. :-)\n\nSincerely Yours,\nYour Coffee Team"
-		fileName = "../../../src/Sheriff_of_Nottingham.pdf"
+		fileName = "../../../../src/Sheriff_of_Nottingham.pdf"
 		subject = "Coffee (Welcome)"
 		snd(email,subject,body,fileName)
 		GetMoneyKernel(NewPerson,FirstMoney, Today)

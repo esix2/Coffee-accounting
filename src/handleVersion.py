@@ -9,11 +9,11 @@ def handleVersion(CreateVersion):
 				year = int(time.strftime("%Y"))
 				pwd = os.getcwd()
 				pwd = os.path.dirname(pwd)
-				if os.path.isdir(pwd+"/Year_"+str(year)):  ### Checks if the year has chaned. This means year has not changed!
+				if os.path.isdir(pwd+"/data/Year_"+str(year)):  ### Checks if the year has chaned. This means year has not changed!
 								for version_index in range(1,1001): ## finds the oldest version in the current year
-												if os.path.isdir(pwd+"/Year_"+str(year)+"/V"+str(version_index)):
-																OldVersion = pwd+"/Year_"+str(year)+"/V"+str(version_index)
-												 				NewVersion = pwd+"/Year_"+str(year)+"/V"+str(version_index+1)
+												if os.path.isdir(pwd+"/data/Year_"+str(year)+"/V"+str(version_index)):
+																OldVersion = pwd+"/data/Year_"+str(year)+"/V"+str(version_index)
+												 				NewVersion = pwd+"/data/Year_"+str(year)+"/V"+str(version_index+1)
 												else:
 																break
 				else:  ### This means year has changed!
@@ -21,20 +21,20 @@ def handleVersion(CreateVersion):
 								key = raw_input("The year has turned into "+str(year)+"! Would you like to excute this task for "+str(year-1)+"? [y/N] ")
 								if key == 'y' or key == 'Y':
 												for version_index in range(1,1001): ## finds the oldest version in the current year
-																if os.path.isdir(pwd+"/Year_"+str(year-1)+"/V"+str(version_index)):
-																				OldVersion = pwd+"/Year_"+str(year-1)+"/V"+str(version_index)
-																				NewVersion = pwd+"/Year_"+str(year-1)+"/V"+str(version_index+1)
+																if os.path.isdir(pwd+"/data/Year_"+str(year-1)+"/V"+str(version_index)):
+																				OldVersion = pwd+"/data/Year_"+str(year-1)+"/V"+str(version_index)
+																				NewVersion = pwd+"/data/Year_"+str(year-1)+"/V"+str(version_index+1)
 																else:
 																				break
 								else:
 												yearChange = True
-												os.makedirs(pwd+"/Year_"+str(year))
+												os.makedirs(pwd+"/data/Year_"+str(year))
 												for version_index in range(1,1001):  ## finds the the oldest version of the last year
-																if os.path.isdir(pwd+"/Year_"+str(year-1)+"/V"+str(version_index)):
-																				OldVersion = pwd+"/Year_"+str(year-1)+"/V"+str(version_index)
+																if os.path.isdir(pwd+"/data/Year_"+str(year-1)+"/V"+str(version_index)):
+																				OldVersion = pwd+"/data/Year_"+str(year-1)+"/V"+str(version_index)
 																else:
 																				break
-												NewVersion = pwd+"/Year_"+str(year)+"/V1"
+												NewVersion = pwd+"/data/Year_"+str(year)+"/V1"
 				df = pd.read_csv(OldVersion+'/csv/PeopleList') 
 				num_members = len(df)
 				if num_members > 1:

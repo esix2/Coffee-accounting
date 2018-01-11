@@ -16,7 +16,7 @@ def initialize():
 												if dir.startswith("Year_"):
 																empty=False
 				if empty:
-								pwd = pwd+'/Year_'+str(year)+'/V1/csv'
+								pwd = pwd+'/data/Year_'+str(year)+'/V1/csv'
 								os.makedirs(pwd)
 
 								accountantEmail = username+"@ti.rwth-aachen.de"
@@ -30,7 +30,7 @@ def initialize():
 								os.system("echo \"Name,Last Termination,Sum,0,1\" > " + pwd +"/PeoplePayment")
 								os.system("echo \"FFTI,0,0,,\" >> " + pwd +"/PeoplePayment")
 
-								pwd = os.path.dirname(origin_pwd)+'/Year_'+str(year)
+								pwd = os.path.dirname(origin_pwd)+'/data/Year_'+str(year)
 								os.system("echo \"Commodity,Type,Receipt,Quantity,Price per item,Tip,Total price,Date,Version,Remarks\" > " + pwd +"/ShoppingList")
 
 
