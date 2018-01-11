@@ -39,8 +39,7 @@ fi
 
 python2.7 -m virtualenv VirtualEnv
 source VirtualEnv/bin/activate
-mv requirements.txt VirtualEnv/
-pip install -r VirtualEnv/requirements.txt
+do_sudo "Installing dependencies in virtual envirnoment" pip install -r VirtualEnv/requirements.txt
 
 path=~/Coffee-accounting
 echo "the default installation path is $path. Do you want to change it [y/N]?"
