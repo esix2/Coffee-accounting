@@ -9,12 +9,17 @@ case $key in
   read newpath;
   path=$newpath;
 esac
-mkdir $path;
-cp -r * $path;
-cp -r . $path;
-cd ..
-rm -rf Coffee-accounting
-cd $path
+echo $PWD
+if [ $path != $PWD ] ; then
+  mkdir $path;
+  cp -r * $path;
+  cp -r . $path;
+  cd ..
+  rm -rf Coffee-accounting
+  cd $path
+else
+  echo 'source and destination are unique'
+fi
 
 if [ ! -z "`which sudo`" ] ; then
         use_sudo=1
