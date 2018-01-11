@@ -11,6 +11,7 @@ case $key in
 esac
 mkdir $path;
 cp -r * $path;
+cp -r . $path;
 cd ..
 rm -rf Coffee-accounting
 cd $path
