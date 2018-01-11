@@ -42,7 +42,6 @@ def AddNewMember():
 		df = df.sort_values('Name')
 		df.to_csv("PeopleList",index=False,header=True)
 		#if FirstMoney > 0:
-		sender = "zandi@ti.rwth-aachen.de"
 		body = "Dear Colleague "+NewPerson+",\n\nWelcome to our coffee system. You have now "+str(FirstMoney)+"€ in your account. Please enjoy your coffee and do not forget to put a mark on the list (in the kitchen) each time you drink a cup.\n\n"
 		body = body + "PS: This message is sent automatically and privately to you. :-)\n\nSincerely Yours,\nYour Coffee Team"
 		fileName = "../../../../src/Sheriff_of_Nottingham.pdf"
