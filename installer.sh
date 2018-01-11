@@ -51,6 +51,7 @@ case $key in
   path=$newpath;
 esac
 mkdir $path;
-cd ../
-mv Coffee-accounting/ $path;
+cp -r * $path;
+cd ..
+rm -rf Coffee-accounting
 cd $path
