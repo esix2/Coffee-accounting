@@ -33,9 +33,16 @@ Running the following commands in the shell terminal
     ./installer
     
 ## How to use
-After installation. Change to #installation_path/src directory. And execute the command:
-
-    python Coffee.py
+After installation. Change to #installation_path/src directory. And execute the command:    
+    First way: 
+    
+        source ../VirtualEnv/bin/activate
+        python Coffee.py
+        
+   second way (in the main folder):
+   
+        chmodx + x Coffee.sh
+        ./Coffee.sh
 
 The rest is easy, you will see what options you have. Good luck. If you have any question email me under zandi@ti.rwth-aachen.de
     
