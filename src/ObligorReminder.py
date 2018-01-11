@@ -6,7 +6,6 @@ from mailSend import mailSend as snd
 from Report import CreatePersonReport
 def ObligorReminder():
 	df = pd.read_csv('PeopleList')
-	df = df[df['Name'] != 'Rudolf Mathar']
 	names = df['Name']
 	emails = df['Email']
 	balance = df['Balance']
