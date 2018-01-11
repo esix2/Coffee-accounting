@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [ ! -z "`which sudo`" ] ; then
         use_sudo=1
 else
@@ -39,7 +39,7 @@ fi
 
 python2.7 -m virtualenv VirtualEnv
 source VirtualEnv/bin/activate
-do_sudo "Installing dependencies in virtual envirnoment" pip install -r requirements.txt
+pip install -r requirements.txt
 
 path=~/Coffee-accounting
 echo "the default installation path is $path. Do you want to change it [y/N]?"
