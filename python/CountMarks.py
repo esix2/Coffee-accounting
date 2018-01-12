@@ -80,7 +80,7 @@ def CountMarks():
 		##################################################
 		##################################################
 	else:
-		os.chdir("../../../../src")
+		os.chdir("../../../../python")
 		df_drink = pd.read_csv('CoffeeList',sep='\t')
 		os.chdir(pwd)
 		Drinks = df_drink['Drink']

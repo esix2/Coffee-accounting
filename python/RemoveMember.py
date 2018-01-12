@@ -85,8 +85,8 @@ def EmailUponiTermination(person,in_msg):
 		msg = "Dear Colleague "+person+",\n\nIt was good to have you as a member of our coffee team. "
 		msg = msg + "We wish you all the best in future.\n"
 		msg = msg+in_msg
-		files = "../../../../src/Sheriff_of_Nottingham.pdf"
-		reportFile = '../../../../src/tmp/'+person+'_report.pdf'
+		files = "../../../../python/Sheriff_of_Nottingham.pdf"
+		reportFile = '../../../../python/tmp/'+person+'_report.pdf'
 		CreatePersonReport(person)
 		if os.path.isfile(reportFile):
 				files = [reportFile,files]

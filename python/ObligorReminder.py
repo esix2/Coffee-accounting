@@ -17,8 +17,8 @@ def ObligorReminder():
 		tmp = str(recipient.values)
 		recipient = str(tmp[2:len(tmp)-2])
 		msg = "Dear Colleague "+obligor+", \n\n\nYour current balance for the coffee system is "+credit+"€. You are kindly requested to recharge your account. Please find the attachment"
-		files = '../../../../src/Sheriff_of_Nottingham.pdf'
-		reportFile = '../../../../src/tmp/'+obligor+'_report.pdf'
+		files = '../../../../python/Sheriff_of_Nottingham.pdf'
+		reportFile = '../../../../python/tmp/'+obligor+'_report.pdf'
 		CreatePersonReport(obligor)
 		if os.path.isfile(reportFile):
 				files = [reportFile,files]

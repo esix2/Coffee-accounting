@@ -1,6 +1,7 @@
-#####!/usr/bin/python
+#!/usr/bin/python
 import sys 
 import os
+import signal
 import shutil
 from CreatePeopleList import CreatePeopleList
 from handleVersion  import handleVersion
@@ -15,9 +16,12 @@ from Report import SendReport
 from initialize import initialize
 from whoIsAccountant import whoIsAccountant 
 from whoIsAccountant import getAccountantInfo
-os.system("killall soffice.bin")
-os.system("clear")
 
+
+# callback function handler for SIGINT
+def signal_handler(signal, frame):
+	print('You pressed Ctrl+C!')
+	sys.exit(0)
 
 def main():
 #	NewVersion, OldVersion, versionKey = handleVersion(False)
@@ -131,12 +135,8 @@ def main():
 				os.chdir(pwd)
 
 if __name__ == "__main__":
-	os.system("rm $(find ../. -print | grep -i '.*~')")
-	os.system("rm $(find ../. -print | grep -i '*.py.swp')")
-	os.system("rm $(find ../. -print | grep -i '*.pyc')")
+	# register signal handler for SIGINT / CTRL + c
+	signal.signal(signal.SIGINT, signal_handler)
 	os.system("clear")
 	main()
-	os.system("rm $(find ../. -print | grep -i '.*~')")
-	os.system("rm $(find ../. -print | grep -i '*.py.swp')")
-	os.system("rm $(find ../. -print | grep -i '*.pyc')")
 	os.system("clear")

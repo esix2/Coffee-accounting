@@ -20,7 +20,7 @@ def AddNewMember():
 			if key == 'n' or key == 'N':
 				NewPerson = raw_input("Then, insert the name once more: ")
 				email = raw_input("Insert the email address of this person: ")
-				FirstMoney = raw_input("Now, insert the start money to go: ")
+				FirstMoney = raw_input("Now, insert the initial deposit: ")
 				try:
 					FirstMoney = float(FirstMoney)
 				except:
@@ -32,7 +32,7 @@ def AddNewMember():
 				pass
 		else:
 			email = raw_input("Insert the email address of this person: ")
-			FirstMoney = raw_input("Now, insert the start money to go: ")
+			FirstMoney = raw_input("Now, insert the initial deposit: ")
 			try:
 				FirstMoney = float(FirstMoney)
 			except:
@@ -44,7 +44,7 @@ def AddNewMember():
 		#if FirstMoney > 0:
 		body = "Dear Colleague "+NewPerson+",\n\nWelcome to our coffee system. You have now "+str(FirstMoney)+"€ in your account. Please enjoy your coffee and do not forget to put a mark on the list (in the kitchen) each time you drink a cup.\n\n"
 		body = body + "PS: This message is sent automatically and privately to you. :-)\n\nSincerely Yours,\nYour Coffee Team"
-		fileName = "../../../../src/Sheriff_of_Nottingham.pdf"
+		fileName = "../../../../python/Sheriff_of_Nottingham.pdf"
 		subject = "Coffee (Welcome)"
 		snd(email,subject,body,fileName)
 		GetMoneyKernel(NewPerson,FirstMoney, Today)

@@ -53,8 +53,8 @@ def CreateAndEmailReport(Person):
 	msg = msg + "This email includes your personal record of payments and drinking. Your current balance is "+balance+"€.\n"
 	msg = msg + "For detailed information on your account, please find the attachment.\n\n"
 	msg = msg + "PS: This message is sent automatically and privately to you. :-)\n\nSincerely Yours,\nYour Coffee Team"
-	files = '../../../../src/Sheriff_of_Nottingham.pdf'
-	reportFile = '../../../../src/tmp/'+Person+'_report.pdf'
+	files = '../../../../python/Sheriff_of_Nottingham.pdf'
+	reportFile = '../../../../python/tmp/'+Person+'_report.pdf'
 	try:
 		CreatePersonReport(Person)
 	except:
@@ -84,7 +84,7 @@ def CreatePersonReport(Person):
 				Summary['Paid'] = SumPayment
 				Header = ['Name','Paid','Expenditure','Balance']
 				Summary = Summary[Header]
-				sourceDir = '../../../../src'
+				sourceDir = '../../../../python'
 				pwd = os.getcwd()
 				os.chdir(sourceDir)
 				if not(os.path.isdir('tmp')):

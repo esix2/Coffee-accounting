@@ -1,4 +1,4 @@
 #!/bin/bash
-source ~/python_venv/coffee-accounting/bin/activate
-cd src/
+source venv/bin/activate
+cd python/
 python coffee.py

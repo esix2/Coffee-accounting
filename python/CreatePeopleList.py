@@ -30,7 +30,7 @@ def CreatePeopleList(addListofDrinksatBottom):
 	tmp.loc[2*len(PeopleNames)-1,0] = 'Student Assistants'
 	tmp.loc[2*len(PeopleNames)+3,0] = 'Guests'
 	People = tmp[0]
-        os.chdir("../../../../src")
+        os.chdir("../../../../python")
         df = pd.read_csv('CoffeeList',sep='\t')
         os.chdir(pwd)
         DrinkNames = df['Drink']
