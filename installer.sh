@@ -14,8 +14,6 @@ if [ $path != $PWD ] ; then
   mkdir $path;
   cp -r * $path;
   cp -r . $path;
-  cd ..
-  rm -rf coffee-accounting
   cd $path
 else
   echo 'source and destination are unique'
