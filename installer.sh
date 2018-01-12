@@ -59,8 +59,8 @@ if [ -z "`which setuptools`" ] ; then
         do_sudo "Installing virtualenv" pip install virtualenv
 fi
 
-python2.7 -m virtualenv VirtualEnv
-source VirtualEnv/bin/activate
+python2.7 -m virtualenv virtualEnv
+source virtualEnv/bin/activate
 pip install -r requirements.txt
 
 
