@@ -5,7 +5,7 @@ from openpyxl.cell import get_column_letter
 from FactsandFigures import FactsandFigures
 def FactsandFigures_to_excel():
         csvFile = 'FactsandFigures'
-	df = pd.read_csv(csvFile)
+ df = pd.read_csv(csvFile)
         df = df.T
         Index = ['Last Version Benefit','Total Income','Current Cash', 'System Expenditure','Inventory Value','Members Credit','System Balance','Security']
         xlsFile = csvFile+'.xlsx'
@@ -18,12 +18,12 @@ def FactsandFigures_to_excel():
         Rows =  ws.get_highest_row()
         for i in range(1,Rows):
                 if i == Rows-1:
-			ws['A'+str(i)].value = ws['A'+str(i+1)].value+" (%)"
+   ws['A'+str(i)].value = ws['A'+str(i+1)].value+" (%)"
                 else:
-			ws['A'+str(i)].value = ws['A'+str(i+1)].value+"("+u"\u20AC"+")"
+   ws['A'+str(i)].value = ws['A'+str(i+1)].value+"("+u"\u20AC"+")"
                 ws['B'+str(i)].value = ws['B'+str(i+1)].value
-	ws['A'+str(Rows)] = ''
-	ws['B'+str(Rows)] = ''
+ ws['A'+str(Rows)] = ''
+ ws['B'+str(Rows)] = ''
         for i in range(1,Rows):
                 ws.row_dimensions[i].height = 50
         ws.column_dimensions[get_column_letter((1))].width = 35
@@ -32,7 +32,7 @@ def FactsandFigures_to_excel():
         Style_Facts(ws,1,Rows-1,1,1,'y')
         Style_Facts(ws,1,Rows-1,2,Columns,'nb')
 
-	return ws
+ return ws
 def Style_Facts(ws,Row_s,Row_e,Col_s,Col_e,c):
         for i in range(Row_s,Row_e+1):
                 for j in range(Col_s,Col_e+1):
@@ -63,7 +63,7 @@ def Style_Facts(ws,Row_s,Row_e,Col_s,Col_e,c):
                                 tmp_cell.style.font.name = 'Arial'
                                 tmp_cell.style.font.bold = False
                         tmp_cell.style.alignment.vertical = "center"
-			tmp_cell.style.alignment.horizontal = "center"
+   tmp_cell.style.alignment.horizontal = "center"
                         tmp_cell.style.alignment.wrap_text = True
                         tmp_cell.style.borders.top.border_style = Border.BORDER_THIN
                         tmp_cell.style.borders.bottom.border_style = Border.BORDER_THIN

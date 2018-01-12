@@ -6,21 +6,21 @@ def lastBenefit():
 ######################## This function calculated indeed the difference between the available cash and the members' credit
 ##############################################################
 ##############################################################
-	pwd = os.getcwd()
-	if pwd  == '/home/zandi/Documents/Kitchen/data/Year_2015/V2/csv':
-		benefit = -18.91
-	else:
-		try:
-			LastVersion = FindPreviousVersion()
-			os.chdir(LastVersion+'/csv')
-			FileName = 'FactsandFigures'
-			df = pd.read_csv(FileName)
-			benefit = df['Current Cash'] - df['Members Credit'] 
-		except:
-			benefit=0
-	benefit = float(benefit)
-	os.chdir(pwd)
-	return benefit
+ pwd = os.getcwd()
+ if pwd  == '/home/zandi/Documents/Kitchen/data/Year_2015/V2/csv':
+  benefit = -18.91
+ else:
+  try:
+   LastVersion = FindPreviousVersion()
+   os.chdir(LastVersion+'/csv')
+   FileName = 'FactsandFigures'
+   df = pd.read_csv(FileName)
+   benefit = df['Current Cash'] - df['Members Credit'] 
+  except:
+   benefit=0
+ benefit = float(benefit)
+ os.chdir(pwd)
+ return benefit
 def FindPreviousVersion():
         year = int(time.strftime("%Y"))
         pwd = os.getcwd()
