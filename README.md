@@ -33,7 +33,7 @@ Running the following commands in the shell terminal
 ## How to use
 After installation. Change to #installation_path/src directory. And execute the command:    
 
-First way: 
+first way: 
     
     source ~/python_venv/coffee-accounting/bin/activate
     python coffee.py
