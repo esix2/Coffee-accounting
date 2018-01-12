@@ -12,8 +12,7 @@ The following softwares and packages are required. Though , it might be still po
     xlsxwriter 0.9.6
     numpy    1.7.1
     keyring  10.3.2
-    getent   0.2
- 
+    
 Also latex including the following are rquired for report functionality
 
     pdflatex
@@ -21,10 +20,9 @@ Also latex including the following are rquired for report functionality
     
 ## Manual installation
 
-    python2.7 -m virtualenv VirtualEnv
-    source VirtualEnv/bin/activate
-    mv requirements.txt VirtualEnv/
-    pip install -r VirtualEnv/requirements.txt   
+    python2.7 -m virtualenv ~/python_venv/coffee-accounting    
+    source ~/python_venv/coffee-accounting
+    pip install -r requirements.txt   
     
     
 ## Installation with 
@@ -34,14 +32,15 @@ Running the following commands in the shell terminal
     
 ## How to use
 After installation. Change to #installation_path/src directory. And execute the command:    
-    First way: 
+
+First way: 
     
-        source ~/python_venv/coffee-accounting/bin/activate
-        python coffee.py
+    source ~/python_venv/coffee-accounting/bin/activate
+    python coffee.py
         
-   second way (in the main folder):
-   
-        ./coffee.sh
+second way (in the main folder):
+
+    ./coffee.sh
 
 The rest is easy, you will see what options you have. Good luck. If you have any question email me under zandi@ti.rwth-aachen.de
     
