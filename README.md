@@ -36,12 +36,12 @@ Running the following commands in the shell terminal
 After installation. Change to #installation_path/src directory. And execute the command:    
     First way: 
     
-        source ../VirtualEnv/bin/activate
-        python Coffee.py
+        source ~/python_venv/coffee-accounting/bin/activate
+        python coffee.py
         
    second way (in the main folder):
    
-        ./Coffee.sh
+        ./coffee.sh
 
 The rest is easy, you will see what options you have. Good luck. If you have any question email me under zandi@ti.rwth-aachen.de
     

@@ -1,4 +1,4 @@
 #!/bin/bash
-source virtualEnv/bin/activate
+source ~/python_venv/coffee-accounting/bin/activate
 cd src/
 python coffee.py

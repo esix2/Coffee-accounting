@@ -9,7 +9,7 @@ case $key in
   read newpath;
   path=$newpath;
 esac
-echo $PWD
+
 if [ $path != $PWD ] ; then
   mkdir $path;
   cp -r * $path;
@@ -57,8 +57,8 @@ if [ -z "`which setuptools`" ] ; then
         do_sudo "Installing virtualenv" pip install virtualenv
 fi
 
-python2.7 -m virtualenv virtualEnv
-source virtualEnv/bin/activate
+python2.7 -m virtualenv ~/python_venv/coffee-accounting
+source ~/python_venv/coffee-accounting/bin/activate
 pip install -r requirements.txt
 
 
