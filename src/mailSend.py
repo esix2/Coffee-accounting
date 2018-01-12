@@ -12,14 +12,21 @@ from email.MIMEBase import MIMEBase
 from email import Encoders
 import keyring
 import getpass
-import getent
+#import getent
 def mailSend(recipient,subject,body,files):
 	###### To get the username automatically from the computer
 	username = getpass.getuser()
-	password = keyring.get_password('system', username)
+	username = str(keyring.get_password('coffee', 'username'))
+	password = str(keyring.get_password('coffee', 'password'))
+	if username == 'None':
+		username = str(raw_input("Please insert your logging name for the mail server: "))
+		keyring.set_password('coffee', "username",username)
+	if username == 'None':
+		username = str(raw_input("Please insert your logging name for the mail server: "))
+		keyring.set_password('coffee', "username",username)
 	if str(password) == 'None':
-		password = getpass.getpass("Please enter your passwrod. It will be stored in your keyring:")
-		keyring.set_password('system', username,password)
+		password = getpass.getpass("Please insert your mail server password. It will be stored in your keyring:")
+		keyring.set_password('coffee', "password",password)
 
 	###### To get the first and sir name of sender automatically from the computer
 #	MyName = getent.passwd(username).gecos[0:len(getent.passwd(username).gecos)-3]
@@ -49,9 +56,10 @@ def mailSend(recipient,subject,body,files):
 	s = smtplib.SMTP("mail.ti.rwth-aachen.de:587")
 	s.ehlo()
 	s.starttls()
-	s.login(username,keyring.get_password('system', username))
+	s.login(username,password)
 	try:
-					s.sendmail(sender, recipient, msg.as_string())
+				if subject != "test":
+							s.sendmail(sender, recipient, msg.as_string())
 	except:
 				raw_input("Email was not sent to "+recipient+ ". Please check the email address!")
 	s.quit()

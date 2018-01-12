@@ -30,7 +30,7 @@ def main():
 	old_versionKey = False
 	ListBottomKey = True ##### If True, adds the list of drink one more time at the bottom of the list
 	while wish == 'y':
-		print "Choose a task to be done: [1-10]?"
+		print "Choose a task to be done: [1-10], or press Enter to skip!"
 		print "\t 1) Add a member"
 		print "\t 2) Remove a member"
 		print "\t 3) Count the marks"
@@ -41,7 +41,6 @@ def main():
 		print "\t 8) Notify the obligors by Email"
 		print "\t 9) Update the marks' list"
 		print "\t10) Update the accountant info"
-#                print "1) Add a member \t2) Remove a member\t3) Count the marks\t4) Get money\t5) Shopping update\t6) Report for individuals\t7) Regular updtae\t8) Inform obligors by email\t9) Update the marks' list"
 
 		key = raw_input()
 		try:
