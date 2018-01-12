@@ -30,5 +30,6 @@ accountant_info
 *.Rout
 *.swp
 *.swo
+**/data
 */tmp
 **/VirtualEnv
