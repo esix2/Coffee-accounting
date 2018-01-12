@@ -1,6 +1,6 @@
 #!/bin/bash
 
-path=~/Coffee-accounting
+path=~/coffee-accounting
 echo "the default installation path is $path. Do you want to change it [y/N]?"
 read key
 case $key in
@@ -15,7 +15,7 @@ if [ $path != $PWD ] ; then
   cp -r * $path;
   cp -r . $path;
   cd ..
-  rm -rf Coffee-accounting
+  rm -rf coffee-accounting
   cd $path
 else
   echo 'source and destination are unique'
