@@ -9,7 +9,7 @@ def ShoppingList_to_excel():
         csvFile = 'ShoppingList'
         df = pd.read_csv(csvFile)
         if float(sum(1 for line in open(csvFile))) < 2:
-   df = pd.DataFrame(np.nan, index=[0], columns=df.columns)
+			df = pd.DataFrame(np.nan, index=[0], columns=df.columns)
         xlsFile = csvFile+'.xlsx'
         writer = pd.ExcelWriter(xlsFile,engine='openpyxl')
         df.index = range(1,len(df)+1)
@@ -20,7 +20,7 @@ def ShoppingList_to_excel():
         Columns = ws.get_highest_column()
         Rows =  ws.get_highest_row()
 
- ws.row_dimensions[1].height = 50
+	ws.row_dimensions[1].height = 50
         for i in range(2,Rows+1):
                 ws.row_dimensions[i].height = 30
         ws.column_dimensions[get_column_letter((1))].width = 5
@@ -43,7 +43,7 @@ def ShoppingList_to_excel():
         ws['H1'].value = "Total Price\n ("+u"\u20AC"+")"
 
         os.chdir(pwd)
- return ws
+	return ws
 def Style_ShoppingList(ws,Row_s,Row_e,Col_s,Col_e,c):
         for i in range(Row_s,Row_e+1):
                 for j in range(Col_s,Col_e+1):
@@ -74,7 +74,7 @@ def Style_ShoppingList(ws,Row_s,Row_e,Col_s,Col_e,c):
                                 tmp_cell.style.font.name = 'Arial'
                                 tmp_cell.style.font.bold = False
                         tmp_cell.style.alignment.vertical = "center"
-   tmp_cell.style.alignment.horizontal = "center"
+			tmp_cell.style.alignment.horizontal = "center"
                         tmp_cell.style.alignment.wrap_text = True
                         tmp_cell.style.borders.top.border_style = Border.BORDER_THIN
                         tmp_cell.style.borders.bottom.border_style = Border.BORDER_THIN

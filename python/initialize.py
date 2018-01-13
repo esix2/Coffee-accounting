@@ -21,10 +21,11 @@ def initialize():
 
         accountantEmail = username+"@ti.rwth-aachen.de"
         os.system("echo \"Name,Balance,Last Termination,Email\" > " + pwd +"/PeopleList")
-        os.system("echo \"FFTI,0,0,"+accountantEmail+"\" >> " + pwd +"/PeopleList")
-        
-#        os.system("echo \"Name\" > " + pwd +"/PeopleExpenditure")
-        
+        os.system("echo \"FFTI,0,0,FFTIEmail\" >> " + pwd +"/PeopleList")
+
+        os.system("echo \"Name\" > " + pwd +"/PeopleExpenditure")
+        os.system("echo \"FFTI\" >> " + pwd +"/PeopleExpenditure")
+
 #        os.system("echo \"Name,Paid,Balance\" > " + pwd +"/PeopleBalance")
 
         os.system("echo \"Name,Last Termination,Sum,0,1\" > " + pwd +"/PeoplePayment")
