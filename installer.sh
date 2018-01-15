@@ -1,70 +1,99 @@
 #!/bin/bash
 
-trap exit INT
+set -e
 
-path=~/coffee-accounting
-echo -n "The default installation path is $path. Do you want to change it? [y/N] "
+# -- global vars
+TARGET=${1:-~/coffee-accounting}
+RED=$(tput setaf 1)
+BLUE=$(tput setaf 4)
+BOLD=$(tput bold)
+SGR0=$(tput sgr0)
+SUDO=$(command -v sudo)
+
+# -- helper functions
+trace() { # message ... 
+	printf "%s * %s%s\n" "$BLUE" "$*" "$SGR0"
+	}
+fatal() { # exit-message ...
+	printf "\n%s: %s%s\n" "$RED${0##*/}" "$BOLD$*" "$SGR0" >&2
+	exit 4 
+	}
+edit() { # prompt default-value ...
+        local PS="${1:-}"
+        shift
+        local VAL="${1:-}"
+        while [ $# -gt 0 ]; do history -s -- "$1"; shift; done
+        #printf "Press up arrow to edit current value: %s\n" "$string"
+        read -ep "$PS: " -i "$VAL"
+        }
+root_do() { # prompt command args...
+	msg=$1 ; shift
+	if [ -n "$SUDO" ] ; then
+		sudo -p "$msg, please enter your password: " $*
+	else
+		if [ "`id -u`" != 0 ] ; then
+			echo "$msg, please enter root password..."
+		fi
+		su -c "$*"
+	fi
+	}
+
+#TMP="$(mktemp "${0##*/}.XXXXXXXXXX")"
+#cleanup() { [ -e "$TMP" ] && fatal "unexpected end of script, plz rm $TMP"; }
+#trap 'cleanup' EXIT
+#trace "using temporary file $TMP"
+
+# trace "here we are..."
+trap 'fatal "*** script aborted ***"' INT
+cat <<INFO
+This will install coffee-accounting and all requirements
+inside a python virtual environment. To cancel press ^C.
+INFO
+
+trace "Checking required system dependencies..."
+MISSING=()
+[ -x "$(command -v python2.7)" ] || MISSING+=('python2.7')
+[ -x "$(command -v pdflatex)" ] || MISSING+=('texlive')
+[ -x "$(command -v pip)" ] || MISSING+=('python-pip')
+[ -x "$(command -v virtualenv)" ] || MISSING+=('virtualenv')
+[ "$MISSING" ] && echo "Missing packages are: ${MISSING[@]}"
+
+trace "Reading installation directory"
+echo -n "The default installation path is $TARGET. Do you want to change it? [y/N] "
 read key
 case $key in
     y|Y|yes|Yes)
-        echo 'It is possible to install into your home directory. Insert your desired path:';
-        read newpath;
-        path=$newpath;
+        edit "It is recommended to install it into your home directory. Insert your desired path:"
+        TARGET=$REPLY
 esac
 
-if [ ! -z "`which sudo`" ] ; then
-    use_sudo=1
-else
-    use_sudo=0
+[ -e "$TARGET" ] && fatal "$TARGET exists, aborting installation"
+
+trace "Creating install dir: $TARGET"
+mkdir -p "$TARGET" 
+[ -e "$TARGET" ] || fatal "could not create install dir $TARGET"
+
+if [ "$MISSING" ]; then
+	trace "Found missing packages: $MISSING"
+	root_do "Installing dependencies" apt install ${MISSING[@]}
 fi
 
-do_sudo() {
-    msg=$1 ; shift
-    if [ "$use_sudo" = 1 ] ; then
-        sudo -p "$msg, please enter your password: " $*
-    else
-        if [ "`id -u`" != 0 ] ; then
-            echo "$msg, please enter root password..."
-        fi
-        su -c "$*"
-    fi
-}
+trace "Setting up virtual environment..."
+python2.7 -m virtualenv "$TARGET/venv"
 
-echo "Checking for system dependencies..."
-if [ -z "`which python2.7`" ] ; then
-    echo "Need python2.7, enter root password to install or hit CTRL+c to quit:"
-    do_sudo "Installing python2.7" apt-get install python2.7
-fi
-if [ -z "`which pdflatex`" ] ; then
-    echo "Need texlive, enter root password to install or hit CTRL+c to quit:"
-    do_sudo "Installing latex" apt-get install texlive
-fi
-if [ -z "`which pip`" ] ; then
-    echo "Need pip, enter root password to install or hit CTRL+c to quit:"
-    do_sudo "Installing pip" sudo apt-get install python-pip
-fi
-if [ -z "`which virtualenv`" ] ; then
-    echo "Need virtualenv, enter root password to install or hit CTRL+c to quit:"
-    do_sudo "Installing virtualenv" pip install virtualenv
-fi
+trace "Activating virtual environment..."
+source "$TARGET/venv/bin/activate"
 
-echo "Checking for python dependencies..."
-echo -n "Using virtualenv to install python dependencies. Continue? [Y/n] "
-read key
-case $key in
-    n|N|no|No) ;;
-    *)
-        python2.7 -m virtualenv ~/coffee-accounting/venv
-        source ~/coffee-accounting/venv/bin/activate
-        pip install -r requirements.txt ;;
-esac
+trace "Installing python requirements..."
+pip install -r requirements.txt 
 
-if [ $path != $PWD ] ; then
-    echo "Install to $path..."
-    cp coffee.sh $path
-    cp -r python/ $path
-    echo "Done."
-else
-    echo 'Warning: Source and destination are unique.'
-fi
+trace "Installing sources..."
+cp -r python/ "$TARGET"
+cp coffee.sh "$TARGET"
+
+trace "Installation complete!"
+cat <<USAGE
+call: $TARGET/coffee  to launch the application
+or creat symlink, eg.: ln -s "$TARGET/coffee" ~/bin/coffee.
+USAGE
 
