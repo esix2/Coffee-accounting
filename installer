@@ -59,14 +59,8 @@ MISSING=()
 [ "$MISSING" ] && echo "Missing packages are: ${MISSING[@]}"
 
 trace "Reading installation directory"
-echo -n "The default installation path is $TARGET. Do you want to change it? [y/N] "
-read key
-case $key in
-    y|Y|yes|Yes)
-        edit "It is recommended to install it into your home directory. Insert your desired path:"
-        TARGET=$REPLY
-esac
-
+edit "Installation Directory" "$TARGET" "$(pwd)"
+TARGET=$REPLY
 [ -e "$TARGET" ] && fatal "$TARGET exists, aborting installation"
 
 trace "Creating install dir: $TARGET"
@@ -89,11 +83,11 @@ pip install -r requirements.txt
 
 trace "Installing sources..."
 cp -r python/ "$TARGET"
-cp coffee.sh "$TARGET"
+cp coffee "$TARGET"
 
 trace "Installation complete!"
 cat <<USAGE
 call: $TARGET/coffee  to launch the application
-or creat symlink, eg.: ln -s "$TARGET/coffee" ~/bin/coffee.
+or creat symlink, eg.: ln -s "$TARGET/coffee" ~/bin/coffee
 USAGE
 

@@ -19,28 +19,31 @@ Also latex including the following are rquired for report functionality
     csvsimple
     
 ## Manual installation
+Download the repo to your installation_path, then
 
-    python2.7 -m virtualenv ~/python_venv/coffee-accounting    
-    source ~/python_venv/coffee-accounting
+    cd installation_path
+    python2.7 -m virtualenv venv
     pip install -r requirements.txt   
     
     
-## Installation with 
+## Installation with script
 Running the following commands in the shell terminal
     
     ./installer
     
 ## How to use
-After installation. Change to #installation_path/src directory. And execute the command:    
 
 first way: 
     
-    source ~/python_venv/coffee-accounting/bin/activate
+    cd installation_path
+    source /venv/bin/activate
+    cd python/
     python coffee.py
         
-second way (in the main folder):
+second way:
 
-    ./coffee.sh
+    cd installation_path
+    ./coffee
 
 The rest is easy, you will see what options you have. Good luck. If you have any question email me under zandi@ti.rwth-aachen.de
     
