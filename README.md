@@ -23,6 +23,7 @@ Download the repo to your installation_path, then
 
     cd installation_path
     python2.7 -m virtualenv venv
+    source venv/bin/activate
     pip install -r requirements.txt   
     
     
@@ -36,7 +37,7 @@ Running the following commands in the shell terminal
 first way: 
     
     cd installation_path
-    source /venv/bin/activate
+    source venv/bin/activate
     cd python/
     python coffee.py
         
